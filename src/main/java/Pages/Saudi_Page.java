@@ -20,6 +20,5 @@ public class Saudi_Page extends Page_Base {
     public void selectSaudiAsCountry() {
         pageBase.Click(this.Saudi_Icon);
     }
-
 }
 

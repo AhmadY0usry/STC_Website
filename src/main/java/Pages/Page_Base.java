@@ -16,7 +16,7 @@ public class Page_Base {
     protected By priceForBasic =By.cssSelector(".price > b");
     protected By priceForPremium =By.cssSelector(".price > b");
     protected By selectLanguage=By.id("translation-btn");
-    protected List <WebElement> list;
+    private List <WebElement> list;
 
     public Page_Base(WebDriver driver) {
         this.driver = driver;
@@ -52,7 +52,7 @@ public class Page_Base {
         {
             return  list.get(0).getText();
         }
-        return list.get(0).getText();
+        return "The currencies are not equal";
     }
     public String getPriceForLite()
     {
