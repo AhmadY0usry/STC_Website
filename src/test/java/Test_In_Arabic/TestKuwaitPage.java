@@ -10,12 +10,12 @@ public class TestKuwaitPage extends Test_Base{
     @Test
     public void TestKuwaitPageArabic()
     {
+        kuwaitPage=new Kuwait_Page(pageBase.ClickOnSelectCountry());
+        kuwaitPage.selectKuwaitAsCountry();
         //check the type of packages
         softAssert.assertTrue(kuwaitPage.getPlanTitleForLite().contains("لايت"),"Lite package Not found");
         softAssert.assertTrue(kuwaitPage.getPlanTitleForBasic().contains("الأساسية"),"Basic package Not found");
         softAssert.assertTrue(kuwaitPage.getPlanTitleForPremium().contains("بريميوم"),"Premium package Not found");
-        kuwaitPage=new Kuwait_Page(pageBase.ClickOnSelectCountry());
-        kuwaitPage.selectKuwaitAsCountry();
         //check currency for all page
         System.out.println(kuwaitPage.getCurrencyForPage());
         softAssert.assertTrue(kuwaitPage.getCurrencyForPage().contains("دينار كويتي"),"The currency is not in Dinar");
