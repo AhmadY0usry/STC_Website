@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Page_Base {
 
-    private WebDriver driver;
+    WebDriver driver;
     protected By planTitle=By.className("plan-title");
     protected By countryBtn=By.id("country-btn");
     protected By currencyForPage=By.cssSelector(".price > i");
@@ -80,20 +80,25 @@ public class Page_Base {
     }
     public String getPriceForLite()
     {
-        list=new ArrayList<>();
+        list=new ArrayList();
         list=driver.findElements(this.priceForLite);
         return list.get(0).getText();
     }
     public String getPriceForBasic()
     {
-        list=new ArrayList<>();
+        list=new ArrayList();
         list=driver.findElements(this.priceForBasic);
         return list.get(1).getText();
     }
     public String getPriceForPremium()
     {
-        list=new ArrayList<>();
+        list=new ArrayList();
         list=driver.findElements(this.priceForPremium);
         return list.get(2).getText();
+    }
+    public WebDriver ClickOnSelectCountry()
+    {
+        Click(this.countryBtn);
+        return this.driver;
     }
 }

@@ -14,10 +14,6 @@ public class Saudi_Page extends Page_Base {
     }
     private By Saudi_Icon=By.id("sa");
 
-    public void ClickOnChkCountry()
-    {
-        pageBase.Click(this.pageBase.countryBtn);
-    }
 
     public void selectSaudiAsCountry()
     {

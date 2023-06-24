@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Kuwait_Page extends Page_Base {
@@ -13,4 +14,11 @@ public class Kuwait_Page extends Page_Base {
         this.pageBase = new Page_Base(driver);
 
     }
+    private By kuwait_Icon=By.id("kw");
+    public void selectKuwaitAsCountry()
+    {
+        pageBase.Click(this.kuwait_Icon);
+    }
+
+
 }

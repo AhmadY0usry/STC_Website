@@ -1,13 +1,14 @@
+import Pages.Saudi_Page;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class TestSaudiPage extends Test_Base {
     {softAssert=new SoftAssert();}
-
+    Saudi_Page saudiPage;
     @Test
-    public void TestLiteSaudiPage()
+    public void TestSaudiPage()
     {
-        saudiPage.ClickOnChkCountry();
+        saudiPage=new Saudi_Page(pageBase.ClickOnSelectCountry());
         saudiPage.selectSaudiAsCountry();
         //check the type of packages
         softAssert.assertTrue(saudiPage.getPlanTitleForLite().contains("لايت"),"Lite package Not found");
