@@ -24,6 +24,7 @@ public class TestBahrainPage extends Test_Base {
         softAssert.assertTrue(bahrainPage.getPriceForBasic().contains("3"),"The price is not 2.5 for basic");
         softAssert.assertTrue(bahrainPage.getPriceForPremium().contains("6"),"The price is not 4.8 for premium");
         softAssert.assertAll();
+        take_screen_shoot("Bahrain_EnglishPage_ScreenShoot");
     }
 }
 

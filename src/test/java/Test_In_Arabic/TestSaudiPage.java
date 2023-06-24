@@ -23,6 +23,7 @@ public class TestSaudiPage extends Test_Base {
         softAssert.assertTrue(saudiPage.getPriceForBasic().contains("25"),"The price is not 25 for basic");
         softAssert.assertTrue(saudiPage.getPriceForPremium().contains("60"),"The price is not 60 for premium");
         softAssert.assertAll();
+        take_screen_shoot("Saudi_Page_ScreenShoot");
     }
 
 
