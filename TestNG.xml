@@ -1,4 +1,5 @@
 <suite name="Suite1" parallel="classes" thread-count="3" >
+    <parameter name="browser" value="edge"/>
     <test name="Regression">
         <classes>
             <class name="Test_In_Arabic.TestSaudiPage"/>
