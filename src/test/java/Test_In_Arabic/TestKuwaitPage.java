@@ -4,7 +4,7 @@ import Pages.Kuwait_Page;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class TestKuwaitPage extends Test_Base{
+public class TestKuwaitPage extends Test_Base {
     Kuwait_Page kuwaitPage;
     {softAssert =new SoftAssert();}
     @Test

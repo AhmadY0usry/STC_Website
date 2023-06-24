@@ -1,6 +1,6 @@
 package Test_In_English;
-
 import Pages.Kuwait_Page;
+import Test_In_Arabic.Test_Base;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
