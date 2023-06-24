@@ -1,5 +1,6 @@
+package Test_In_Arabic;
+
 import Pages.Page_Base;
-import Pages.Saudi_Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.BeforeClass;

@@ -1,3 +1,5 @@
+package Test_In_Arabic;
+
 import Pages.Kuwait_Page;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -6,8 +8,12 @@ public class TestKuwaitPage extends Test_Base{
     Kuwait_Page kuwaitPage;
     {softAssert =new SoftAssert();}
     @Test
-    public void TestKuwaitPage ()
+    public void TestKuwaitPageArabic()
     {
+        //check the type of packages
+        softAssert.assertTrue(kuwaitPage.getPlanTitleForLite().contains("لايت"),"Lite package Not found");
+        softAssert.assertTrue(kuwaitPage.getPlanTitleForBasic().contains("الأساسية"),"Basic package Not found");
+        softAssert.assertTrue(kuwaitPage.getPlanTitleForPremium().contains("بريميوم"),"Premium package Not found");
         kuwaitPage=new Kuwait_Page(pageBase.ClickOnSelectCountry());
         kuwaitPage.selectKuwaitAsCountry();
         //check currency for all page

@@ -15,14 +15,7 @@ public class Page_Base {
     protected By priceForLite =By.cssSelector(".price > b");
     protected By priceForBasic =By.cssSelector(".price > b");
     protected By priceForPremium =By.cssSelector(".price > b");
-    protected By discovery =By.cssSelector("div:nth-child(4) div.plan-names > div");
-    protected By freeTrail =By.cssSelector("div:nth-child(5) > div.plan-names > div:nth-child(1)");
-    protected By qualityPixel =By.cssSelector("div:nth-child(6) > div.plan-names > div:nth-child(1)");
-    protected By deviceNo =By.cssSelector("div:nth-child(7) > div.plan-names > div:nth-child(1)");
-    protected By restoreViewing =By.cssSelector("div:nth-child(8) > div.plan-names > div:nth-child(1)");
-    protected By watchWithInternet =By.cssSelector("div:nth-child(9) > div.plan-names > div:nth-child(1) >img");
-    protected By watchSync =By.cssSelector("div:nth-child(10) > div.plan-names > div:nth-child(1) >img");
-    protected By castingFeature =By.cssSelector("div:nth-child(10) > div.plan-names > div:nth-child(1) >img");
+    protected By selectLanguage=By.id("translation-btn");
     protected List <WebElement> list;
 
     public Page_Base(WebDriver driver) {
@@ -32,23 +25,6 @@ public class Page_Base {
     {
         driver.findElement(by).click();
     }
-    public String getText(By by)
-    {
-        return driver.findElement(by).getText();
-    }
-    public String getAttribute(By by)
-    {
-        return driver.findElement(by).getAttribute("src");
-    }
-
-    public WebElement getWebElementsListByIndexFromDiscovery(int Index)
-    {
-       list= new ArrayList();
-       list=driver.findElements(this.discovery);
-       return list.get(Index);
-    }
-
-
     public String getPlanTitleForLite()
     {
         list=new ArrayList();
@@ -72,7 +48,7 @@ public class Page_Base {
     {
         list=new ArrayList();
         list=driver.findElements(this.currencyForPage);
-        if(list.get(0).getText() == list.get(1).getText() && list.get(0).getText()==list.get(2).getText())
+        if (list.get(0).getText() == list.get(1).getText() && list.get(0).getText()==list.get(2).getText())
         {
             return  list.get(0).getText();
         }
@@ -101,4 +77,10 @@ public class Page_Base {
         Click(this.countryBtn);
         return this.driver;
     }
+
+    public void clickOnTranslateBtn()
+    {
+        Click(this.selectLanguage);
+    }
+
 }
