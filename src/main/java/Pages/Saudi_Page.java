@@ -3,6 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+
 public class Saudi_Page extends Page_Base {
     WebDriver driver;
     Page_Base pageBase;
@@ -12,8 +13,7 @@ public class Saudi_Page extends Page_Base {
         this.pageBase=new Page_Base(driver);
     }
     private By Saudi_Icon=By.id("sa");
-    private By Kuwait_Icon=By.id("kw");
-    private By Bahrain_Icon=By.id("bh");
+
     public void ClickOnChkCountry()
     {
         pageBase.Click(this.pageBase.countryBtn);
@@ -23,29 +23,14 @@ public class Saudi_Page extends Page_Base {
     {
         pageBase.Click(this.Saudi_Icon);
     }
-    public void selectKuwaitAsCountry()
+
+    public String getBasicPackPrice()
     {
-        pageBase.Click(this.Kuwait_Icon);
+        return pageBase.getText(pageBase.priceForBasic);
     }
-    public void selectBahrainAsCountry()
+    public String getPremiumPackPrice()
     {
-        pageBase.Click(this.Bahrain_Icon);
-    }
-    public String getSaudiCurrencyLite()
-    {
-            return pageBase.getText(pageBase.currencyForLite);
-    }
-    public String getSaudiCurrencyBasic()
-    {
-        return pageBase.getText(pageBase.currencyForBasic);
-    }
-    public String getSaudiCurrencyPremium()
-    {
-        return pageBase.getText(pageBase.currencyForPremium);
-    }
-    public String getLitePackPrice()
-    {
-        return pageBase.getText(pageBase.price);
+        return pageBase.getText(pageBase.priceForPremium);
     }
     public String getDiscoveryForLite()
     {
@@ -60,7 +45,15 @@ public class Saudi_Page extends Page_Base {
         return pageBase.getWebElementsListByIndexFromDiscovery(2).getText();
     }
 
-    public String getFreeTrailPeriod()
+    public String getFreeTrailPeriodForLite()
+    {
+        return pageBase.getText(pageBase.freeTrail);
+    }
+    public String getFreeTrailPeriodForBasic()
+    {
+        return pageBase.getText(pageBase.freeTrail);
+    }
+    public String getFreeTrailPeriodForPremium()
     {
         return pageBase.getText(pageBase.freeTrail);
     }
@@ -89,4 +82,5 @@ public class Saudi_Page extends Page_Base {
     {
         return pageBase.getAttribute(pageBase.castingFeature);
     }
+
 }
