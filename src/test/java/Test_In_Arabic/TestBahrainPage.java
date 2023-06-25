@@ -1,11 +1,8 @@
 package Test_In_Arabic;
 import Pages.Bahrain_Page;
-import org.testng.ITest;
-import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 
 public class TestBahrainPage extends Test_Base {
     Bahrain_Page bahrainPage;
