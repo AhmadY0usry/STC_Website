@@ -1,6 +1,7 @@
 package Test_In_Arabic;
 
 import Pages.Kuwait_Page;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -10,6 +11,7 @@ public class TestKuwaitPage extends Test_Base {
     @Test
     public void TestKuwaitPageArabic()
     {
+        iTestResult = Reporter.getCurrentTestResult();
         kuwaitPage=new Kuwait_Page(pageBase.ClickOnSelectCountry());
         kuwaitPage.selectKuwaitAsCountry();
         //check the type of packages
@@ -24,7 +26,6 @@ public class TestKuwaitPage extends Test_Base {
         softAssert.assertTrue(kuwaitPage.getPriceForBasic().contains("2.5"),"The price is not 2.5 for basic");
         softAssert.assertTrue(kuwaitPage.getPriceForPremium().contains("4.8"),"The price is not 4.8 for premium");
         softAssert.assertAll();
-        take_screen_shoot("Kuwait_Page_ScreenShoot");
 
     }
 }

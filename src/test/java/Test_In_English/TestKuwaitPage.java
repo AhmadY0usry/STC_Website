@@ -24,7 +24,6 @@ public class TestKuwaitPage extends Test_Base {
         softAssert.assertTrue(kuwaitPage.getPriceForBasic().contains("2.5"),"The price is not 2.5 for basic");
         softAssert.assertTrue(kuwaitPage.getPriceForPremium().contains("4.8"),"The price is not 4.8 for premium");
         softAssert.assertAll();
-        take_screen_shoot("Kuwait_EnglishPage_ScreenShoot");
 
     }
 }

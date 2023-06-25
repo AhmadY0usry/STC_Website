@@ -2,6 +2,7 @@ package Test_In_Arabic;
 import Pages.Bahrain_Page;
 import org.testng.ITest;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -9,10 +10,10 @@ import org.testng.asserts.SoftAssert;
 public class TestBahrainPage extends Test_Base {
     Bahrain_Page bahrainPage;
     {softAssert =new SoftAssert();}
-    ITestResult testResult;
     @Test
     public void TestBahrainPageArabic()
     {
+        iTestResult = Reporter.getCurrentTestResult();
         bahrainPage=new Bahrain_Page(pageBase.ClickOnSelectCountry());
         bahrainPage.selectBahrainAsCountry();
         //check the type of packages
@@ -22,11 +23,10 @@ public class TestBahrainPage extends Test_Base {
         //check currency for all page
         softAssert.assertTrue(bahrainPage.getCurrencyForPage().contains("دينار بحريني"),"The currency is not in Bahrain Dinar");
         //Check Price for packages
-        softAssert.assertTrue(bahrainPage.getPriceForLite().contains("2"),"The price is not 1.2 for lite");
-        softAssert.assertTrue(bahrainPage.getPriceForBasic().contains("3"),"The price is not 2.5 for basic");
-        softAssert.assertTrue(bahrainPage.getPriceForPremium().contains("6"),"The price is not 4.8 for premium");
+        softAssert.assertTrue(bahrainPage.getPriceForLite().contains("2"),"The price is not 2 for lite");
+        softAssert.assertTrue(bahrainPage.getPriceForBasic().contains("3"),"The price is not 3 for basic");
+        softAssert.assertTrue(bahrainPage.getPriceForPremium().contains("6"),"The price is not 6 for premium");
         softAssert.assertAll();
-        take_screen_shoot("Bahrain_Page_ScreenShoot");
     }
 }
 

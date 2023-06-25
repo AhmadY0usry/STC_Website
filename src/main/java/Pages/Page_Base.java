@@ -2,7 +2,6 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,11 +47,13 @@ public class Page_Base {
     {
         list=new ArrayList();
         list=driver.findElements(this.currencyForPage);
-        if (list.get(0).getText() == list.get(1).getText() && list.get(0).getText()==list.get(2).getText())
-        {
+        String v1=list.get(0).getText();
+        String v2=list.get(1).getText();
+        String v3=list.get(2).getText();
+        if ((v1.contains(v2) && v1.contains(v3)))
             return  list.get(0).getText();
-        }
-        return "The currencies are not equal";
+        else
+            return "The currencies are not the same";
     }
     public String getPriceForLite()
     {
@@ -82,5 +83,6 @@ public class Page_Base {
     {
         Click(this.selectLanguage);
     }
+
 
 }

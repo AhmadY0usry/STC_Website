@@ -8,11 +8,11 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -20,16 +20,18 @@ public class Test_Base {
     private WebDriver driver;
     protected Page_Base pageBase;
     protected SoftAssert softAssert;
-    ITestResult iTestResult;
+    protected ITestResult iTestResult;
+
+
     @BeforeClass
     @Parameters("browser")
     public void setUp(@Optional("Edge")String browserName)
     {
         if(browserName.equalsIgnoreCase("edge"))
             driver= new EdgeDriver();
-            else if (browserName.equalsIgnoreCase("Chrome"))
+        else if (browserName.equalsIgnoreCase("Chrome"))
             driver= new ChromeDriver();
-            else if (browserName.equalsIgnoreCase("Firefox"))
+        else if (browserName.equalsIgnoreCase("Firefox"))
             driver= new FirefoxDriver();
 
         driver.get("https://subscribe.stctv.com/sa-ar");
@@ -46,9 +48,11 @@ public class Test_Base {
             }
         }
     }
-    public void takeScreenShotOnFailure(ITestResult testResult,String name){
-        if (testResult.getStatus() == ITestResult.FAILURE) {
-            take_screen_shoot(name);
+
+    @AfterMethod
+    public void takeScreenShotOnFailure(ITestResult testResult){
+        if (ITestResult.FAILURE==testResult.getStatus()) {
+            take_screen_shoot(testResult.getInstanceName());
         }
     }
 }

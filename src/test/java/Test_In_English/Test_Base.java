@@ -1,13 +1,14 @@
 package Test_In_English;
-
 import Pages.Page_Base;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.io.File;
@@ -17,28 +18,39 @@ public class Test_Base {
     private WebDriver driver;
     protected Page_Base pageBase;
     protected SoftAssert softAssert;
+    protected ITestResult iTestResult;
+
     @BeforeClass
-    public void setUp()
-    {
-        driver= new EdgeDriver();
+    @Parameters("browser")
+    public void setUp(@Optional("Edge") String browserName) {
+        if (browserName.equalsIgnoreCase("edge"))
+            driver = new EdgeDriver();
+        else if (browserName.equalsIgnoreCase("Chrome"))
+            driver = new ChromeDriver();
+        else if (browserName.equalsIgnoreCase("Firefox"))
+            driver = new FirefoxDriver();
+
         driver.get("https://subscribe.stctv.com/sa-ar");
         driver.manage().window().maximize();
-        pageBase =new Page_Base(driver);
+        pageBase = new Page_Base(driver);
     }
+
     public void take_screen_shoot(String name) {
         {
-            File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             try {
-                FileHandler.copy(scrFile, new File("D:\\TestAutomatiom University\\STC_project\\target\\ScreenShoots\\"+name+".png"));
+                FileHandler.copy(scrFile, new File("D:\\TestAutomatiom University\\STC_project\\target\\ScreenShoots\\" + name + ".png"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
-    public void takeScreenShotOnFailure(ITestResult testResult, String name){
-        if (testResult.getStatus() == ITestResult.FAILURE) {
-            take_screen_shoot(name);
+
+    @AfterMethod
+    public void takesScreenShotOnFailure(ITestResult testResult) {
+        if (ITestResult.FAILURE == testResult.getStatus()) {
+            take_screen_shoot(testResult.getInstanceName());
+            take_screen_shoot(testResult.getName());
         }
     }
-
 }
